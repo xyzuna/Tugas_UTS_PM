@@ -11,6 +11,7 @@ class ListChatActivity : AppCompatActivity() {
     private lateinit var buttonSend: Button
     private lateinit var adapter: ArrayAdapter<String>
     private lateinit var dataChat: ArrayList<String>
+    private var buttonNull: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +21,7 @@ class ListChatActivity : AppCompatActivity() {
         editTextComment = findViewById(R.id.editTextComment)
         buttonSend = findViewById(R.id.buttonSend)
 
-        // Data awal dalam ArrayList agar bisa dimodifikasi
+
         dataChat = arrayListOf(
             "Budi: Keren Banget?",
             "Siti: Ajarin dong >_<",
@@ -40,7 +41,7 @@ class ListChatActivity : AppCompatActivity() {
             val comment = editTextComment.text.toString().trim()
 
             if (comment.isNotEmpty()) {
-                dataChat.add("Saya: $comment")  // Tambah komentar baru
+                dataChat.add("Saya: $comment")
                 adapter.notifyDataSetChanged()  // Update tampilan ListView
                 editTextComment.text.clear()    // Kosongkan input
                 listView.smoothScrollToPosition(dataChat.size - 1) // Scroll ke bawah
